@@ -5,8 +5,7 @@ import android.provider.BaseColumns;
 /**
  * Created by j.boeser on 7-2-2017.
  */
-
-public class SeriesContract {
+public final class SeriesContract {
 
     private SeriesContract () {
     }

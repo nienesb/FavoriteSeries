@@ -4,25 +4,22 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.app.Application;
+import android.provider.BaseColumns;
+
+import java.security.AccessControlContext;
 
 import static java.security.AccessController.getContext;
 
 
-/**
- * Created by j.boeser on 7-2-2017.
- */
-
-class DbHelper extends SQLiteOpenHelper{
+public class DbHelper extends SQLiteOpenHelper {
 
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "SeriesDB";
 
-    private DbHelper (Context context) {
+    DbHelper(ApplicationContextProvider context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
-    DbHelper mDbHelper = new DbHelper(getContext());
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -38,8 +35,4 @@ class DbHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS " + SeriesContract.SeriesDB.TABLE_NAME);
         onCreate(db);
     }
-
-
-
-
 }
